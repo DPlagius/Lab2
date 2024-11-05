@@ -8,23 +8,23 @@
         Title="MainWindow" Height="650" Width="900">
     <Border Padding="18">
         <Grid>
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" >
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Матрица A:" Margin=" 10 5"/>
-                    <TextBox x:Name="RowsMatrixATextBox" Width="40" Margin="5"/>
+                    <TextBlock Text="Размеры первой матрицы:" Margin=" 10 5"/>
+                    <TextBox x:Name="RowsMatrixATextBox" Width="40" Margin="5" Text ="2"/>
                     <TextBlock Text="x" VerticalAlignment="Center"/>
-                    <TextBox x:Name="ColsMatrixATextBox" Width="40" Margin="5"/>
+                    <TextBox x:Name="ColsMatrixATextBox" Width="40" Margin="5" Text ="2"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Матрица B:" Margin="10 5"/>
-                    <TextBox x:Name="RowsMatrixBTextBox" Width="40" Margin="5"/>
+                    <TextBlock Text="Размеры второй матрицы:" Margin="10 5"/>
+                    <TextBox x:Name="RowsMatrixBTextBox" Width="40" Margin="5" Text ="2"/>
                     <TextBlock Text="x" VerticalAlignment="Center"/>
-                    <TextBox x:Name="ColsMatrixBTextBox" Width="40" Margin="5"/>
+                    <TextBox x:Name="ColsMatrixBTextBox" Width="40" Margin="5" Text ="2"/>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal"  Margin="10">
                     <TextBlock Text="Операция:" />
-                    <ComboBox x:Name="OperationComboBox" Width="100" Margin="10 0 0 0" >
+                    <ComboBox x:Name="OperationComboBox" Width="100" Margin="10 0 0 0" SelectedIndex="0">
                         <ComboBoxItem Content="+" />
                         <ComboBoxItem Content="*" />
                     </ComboBox>

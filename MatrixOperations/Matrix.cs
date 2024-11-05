@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Globalization;
 
-namespace WPFLab2
+namespace MatrixOperations
 {
     public class Matrix<T> where T : struct
     {
@@ -15,7 +8,7 @@ namespace WPFLab2
         public int columns { get; }
         private T[,] elements;
 
-        public Matrix(int rows, int columns) 
+        public Matrix(int rows, int columns)
         {
             if (rows <= 0 || columns <= 0)
                 throw new ArgumentException("Negative demention");
@@ -23,7 +16,7 @@ namespace WPFLab2
             this.columns = columns;
             this.elements = new T[rows, columns];
         }
-        
+
         public T this[int row, int col]
         {
             get => elements[row, col];
@@ -39,14 +32,14 @@ namespace WPFLab2
 
         public static Matrix<T> operator +(Matrix<T> matrix1, Matrix<T> matrix2)
         {
-            if (matrix1.columns != matrix2.columns || matrix1.rows != matrix2.rows) 
+            if (matrix1.columns != matrix2.columns || matrix1.rows != matrix2.rows)
                 throw new ArgumentException("Dimensions of matrices must be the same for addition.");
             int rows = matrix1.rows;
             int columns = matrix1.columns;
             var result = new Matrix<T>(rows, columns);
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < columns; j++)
-                    result[i, j] = (dynamic) matrix1[i, j] + matrix2[i, j];
+                    result[i, j] = (dynamic)matrix1[i, j] + matrix2[i, j];
             return result;
         }
 

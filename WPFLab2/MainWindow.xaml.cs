@@ -10,50 +10,49 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using MatrixOperations;
 
 namespace WPFLab2
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-        private Matrix<double> matrixA;
-        private Matrix<double> matrixB;
+        private Matrix<double> matrix1;
+        private Matrix<double> matrix2;
         private Matrix<double> matrixC;
 
         public MainWindow()
         {
             InitializeComponent();
         }
+
         private void CreateMatrices_Click(object sender, RoutedEventArgs e)
         {
-            int m1 = int.Parse(RowsMatrixATextBox.Text);
-            int n1 = int.Parse(ColsMatrixATextBox.Text);
-            int m2 = int.Parse(RowsMatrixBTextBox.Text);
-            int n2 = int.Parse(ColsMatrixBTextBox.Text);
+            int rows1 = Convert.ToInt32(RowsMatrixATextBox.Text);
+            int columns1 = Convert.ToInt32(ColsMatrixATextBox.Text);
+            int rows2 = Convert.ToInt32(RowsMatrixBTextBox.Text);
+            int columns2 = Convert.ToInt32(ColsMatrixBTextBox.Text);
 
-            matrixA = new Matrix<double>(m1, n1);
-            matrixB = new Matrix<double>(m2, n2);
+            matrix1 = new Matrix<double>(rows1, columns1);
+            matrix2 = new Matrix<double>(rows2, columns2);
 
-            DisplayMatrix(matrixA, MatrixAControl);
-            DisplayMatrix(matrixB, MatrixBControl);
+            DisplayMatrix(matrix1, MatrixAControl);
+            DisplayMatrix(matrix2, MatrixBControl);
         }
 
         private void GenerateRandomValues_Click(object sender, RoutedEventArgs e)
         {
-            if (matrixA == null || matrixB == null)
+            if (matrix1 == null || matrix2 == null)
             {
                 MessageBox.Show("Сначала создайте матрицы.");
                 return;
             }
 
             Random rand = new Random();
-            matrixA.Generate((i, j) => rand.NextDouble() * 10);
-            matrixB.Generate((i, j) => rand.NextDouble() * 10);
+            matrix1.Generate((i, j) => rand.NextDouble() * 10);
+            matrix2.Generate((i, j) => rand.NextDouble() * 10);
 
-            DisplayMatrix(matrixA, MatrixAControl);
-            DisplayMatrix(matrixB, MatrixBControl);
+            DisplayMatrix(matrix1, MatrixAControl);
+            DisplayMatrix(matrix2, MatrixBControl);
         }
 
         private void DisplayMatrix(Matrix<double> matrix, ItemsControl control)
@@ -118,23 +117,23 @@ namespace WPFLab2
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            if (matrixA == null || matrixB == null)
+            if (matrix1 == null || matrix2 == null)
             {
                 MessageBox.Show("Сначала создайте и заполните матрицы.");
                 return;
             }
 
-            UpdateMatrix(matrixA, MatrixAControl);
-            UpdateMatrix(matrixB, MatrixBControl);
+            UpdateMatrix(matrix1, MatrixAControl);
+            UpdateMatrix(matrix2, MatrixBControl);
 
             if (OperationComboBox.SelectedIndex == 0)
             {
-                matrixC = matrixA + matrixB;
+                matrixC = matrix1 + matrix2;
                 DisplayMatrix(matrixC, MatrixCControl);
             }
             else if (OperationComboBox.SelectedIndex == 1)
             {
-                matrixC = matrixA * matrixB;
+                matrixC = matrix1 * matrix2;
                 DisplayMatrix(matrixC, MatrixCControl);
             }
         }

@@ -1,0 +1,50 @@
+﻿<Window x:Class="WPFLab2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFLab2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="650" Width="900">
+    <Border Padding="18">
+        <Grid>
+            <StackPanel Orientation="Vertical">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Матрица A:" Margin=" 10 5"/>
+                    <TextBox x:Name="RowsMatrixATextBox" Width="40" Margin="5"/>
+                    <TextBlock Text="x" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ColsMatrixATextBox" Width="40" Margin="5"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Матрица B:" Margin="10 5"/>
+                    <TextBox x:Name="RowsMatrixBTextBox" Width="40" Margin="5"/>
+                    <TextBlock Text="x" VerticalAlignment="Center"/>
+                    <TextBox x:Name="ColsMatrixBTextBox" Width="40" Margin="5"/>
+                </StackPanel>
+
+                <StackPanel Orientation="Horizontal"  Margin="10">
+                    <TextBlock Text="Операция:" />
+                    <ComboBox x:Name="OperationComboBox" Width="100" Margin="10 0 0 0" >
+                        <ComboBoxItem Content="+" />
+                        <ComboBoxItem Content="*" />
+                    </ComboBox>
+                </StackPanel>
+
+                <Button Content="Новые матрицы" Click="CreateMatrices_Click" Margin="10" Height="30"/>
+                <Button Content="Заполнить рандомом" Click="GenerateRandomValues_Click" Margin="10 0" Height="30"/>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="10">
+                    <ItemsControl x:Name="MatrixAControl" Margin="10" />
+                    <ItemsControl x:Name="MatrixBControl" Margin="10" />
+                </StackPanel>
+
+                <Button Content="Вычислить" Click="Calculate_Click" Margin="10" Height="30"/>
+
+                <ItemsControl x:Name="MatrixCControl" Margin="10" />
+
+                <TextBlock x:Name="CalculationTimeTextBlock" Margin="10" />
+                <Button Content="Сохранить" Click="SaveResult_Click" Margin="10" Height="30"/>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

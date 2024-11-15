@@ -18,7 +18,7 @@ namespace WPFLab2
     {
         private Matrix<double> matrix1;
         private Matrix<double> matrix2;
-        private Matrix<double> matrixC;
+        private Matrix<double> matrix3;
 
         public MainWindow()
         {
@@ -128,13 +128,13 @@ namespace WPFLab2
 
             if (OperationComboBox.SelectedIndex == 0)
             {
-                matrixC = matrix1 + matrix2;
-                DisplayMatrix(matrixC, MatrixCControl);
+                matrix3 = matrix1 + matrix2;
+                DisplayMatrix(matrix3, MatrixCControl);
             }
             else if (OperationComboBox.SelectedIndex == 1)
             {
-                matrixC = matrix1 * matrix2;
-                DisplayMatrix(matrixC, MatrixCControl);
+                matrix3 = matrix1 * matrix2;
+                DisplayMatrix(matrix3, MatrixCControl);
             }
         }
 
@@ -149,7 +149,7 @@ namespace WPFLab2
             bool? result = dlg.ShowDialog();
             if (result == true)
             {
-                matrixC.SaveToCsv(dlg.FileName);
+                matrix3.SaveToCsv(dlg.FileName);
                 MessageBox.Show("Результат сохранен!");
             }
         }

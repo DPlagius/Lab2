@@ -8,13 +8,13 @@ namespace MatrixOperations
         public int columns { get; }
         private T[,] elements;
 
-        public Matrix(int rows, int columns)
+        public Matrix(int Rows, int Columns)
         {
-            if (rows <= 0 || columns <= 0)
+            if (Rows <= 0 || Columns <= 0)
                 throw new ArgumentException("Negative demention");
-            this.rows = rows;
-            this.columns = columns;
-            this.elements = new T[rows, columns];
+            rows = Rows;
+            columns = Columns;
+            elements = new T[Rows, Columns];
         }
 
         public T this[int row, int col]
@@ -25,6 +25,8 @@ namespace MatrixOperations
 
         public void Generate(Func<int, int, T> generator)
         {
+            if (generator == null)
+                throw new ArgumentException("There Is No Generator");
             for (int i = 0; i < rows; i++)
                 for (int j = 0; j < columns; j++)
                     elements[i, j] = generator(i, j);
